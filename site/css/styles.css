@@ -249,8 +249,12 @@ body::after{
   .nav-toggle { display:flex; }
   .nav-links {
     position:fixed;
-    inset:0;
     top:0;
+    left:0;
+    right:0;
+    width:100%;
+    height:100vh;
+    height:100dvh;
     background:var(--paper);
     flex-direction:column;
     justify-content:center;
@@ -258,10 +262,16 @@ body::after{
     gap:.25rem;
     padding:5rem 1.5rem 2rem;
     transform:translateY(-100%);
-    transition:transform .35s cubic-bezier(.4,0,.2,1);
+    transition:transform .35s cubic-bezier(.4,0,.2,1), visibility 0s linear .35s;
+    visibility:hidden;
+    overflow-y:auto;
     z-index:100;
   }
-  .nav-links.open { transform:translateY(0); }
+  .nav-links.open {
+    transform:translateY(0);
+    visibility:visible;
+    transition:transform .35s cubic-bezier(.4,0,.2,1), visibility 0s linear 0s;
+  }
   .nav-links a {
     padding:1rem 1.1rem;
     font-size:1.15rem;
