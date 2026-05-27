@@ -1,0 +1,24 @@
+# Source video (large binary, frames extracted from it are committed)
+finalpooltransitionvideo.mp4
+
+# Local screenshots / browser-automation artifacts
+hero-current.png
+.playwright-mcp/
+
+# Auto-memory (machine-local)
+memory/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+*~
+.vscode/
+.idea/
+
+# Node (in case any tooling is added later)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*

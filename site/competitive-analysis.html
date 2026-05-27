@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Kincan Water Solution | Competitive Analysis</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&display=swap" rel="stylesheet" />
+<style>
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+:root {
+  --ink:#0a0a0a;
+  --paper:#f6f4f0;
+  --card:#fffefa;
+  --accent:#c45d3e;       /* terracotta (report-only) */
+  --accent-light:#e8a48e;
+  --muted:#8a8580;
+  --hairline:#d6d2cc;
+  --shadow:rgba(10,10,10,.06);
+  --cyan:#0E7DAB;
+  --navy:#0B1F2A;
+  --good:#1f7a3f;
+  --warn:#a4651e;
+}
+
+html { scroll-behavior:smooth; }
+
+body {
+  font-family:'DM Sans', system-ui, sans-serif;
+  background:var(--paper);
+  color:var(--ink);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+
+body::after{
+  content:'';
+  position:fixed;
+  inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.045'/%3E%3C/svg%3E");
+  pointer-events:none;
+  z-index:9999;
+}
+
+.container { max-width:920px; margin:0 auto; padding:0 2rem; }
+@media (max-width:640px){ .container { padding:0 1.25rem; } }
+
+/* HEADER */
+.cover {
+  padding:6rem 0 3.5rem;
+  text-align:center;
+  position:relative;
+}
+.cover::before{
+  content:'';
+  position:absolute;
+  top:0;
+  left:50%;
+  transform:translateX(-50%);
+  width:1px;
+  height:80px;
+  background:linear-gradient(to bottom, transparent, var(--accent));
+}
+.eyebrow {
+  font-size:.72rem;
+  letter-spacing:.28em;
+  text-transform:uppercase;
+  color:var(--accent);
+  font-weight:600;
+  margin-bottom:1.4rem;
+}
+h1 {
+  font-family:'Instrument Serif', serif;
+  font-size:clamp(2.8rem, 6vw, 4.4rem);
+  line-height:1.05;
+  letter-spacing:-.01em;
+  margin-bottom:1rem;
+}
+.cover .lede {
+  max-width:640px;
+  margin:1.2rem auto 0;
+  color:var(--muted);
+  font-size:1.05rem;
+}
+.meta-row {
+  display:flex;
+  justify-content:center;
+  gap:2rem;
+  margin-top:2.4rem;
+  font-size:.78rem;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--muted);
+  flex-wrap:wrap;
+}
+.meta-row b { color:var(--ink); font-weight:600; }
+
+/* SECTION */
+section { padding:3rem 0; }
+section + section { border-top:1px solid var(--hairline); }
+.section-eyebrow {
+  font-family:'DM Sans', sans-serif;
+  font-size:.72rem;
+  letter-spacing:.24em;
+  text-transform:uppercase;
+  color:var(--accent);
+  font-weight:600;
+}
+h2 {
+  font-family:'Instrument Serif', serif;
+  font-size:clamp(2rem, 4vw, 2.7rem);
+  margin:.4rem 0 1.4rem;
+  line-height:1.1;
+  letter-spacing:-.005em;
+}
+h3 {
+  font-family:'Instrument Serif', serif;
+  font-size:1.55rem;
+  margin-bottom:.4rem;
+  line-height:1.15;
+}
+p { color:#2a2a2a; font-size:1rem; }
+p + p { margin-top:.9rem; }
+
+/* SUMMARY GRID */
+.summary {
+  display:grid;
+  grid-template-columns:repeat(4, 1fr);
+  gap:1rem;
+  margin:2rem 0 1rem;
+}
+@media (max-width:720px){ .summary { grid-template-columns:repeat(2, 1fr); } }
+.kpi {
+  background:var(--card);
+  border-left:3px solid var(--accent);
+  padding:1.2rem 1rem;
+  box-shadow:0 1px 0 var(--shadow);
+}
+.kpi .n {
+  font-family:'Instrument Serif', serif;
+  font-size:2.2rem;
+  line-height:1;
+  color:var(--ink);
+}
+.kpi .l {
+  font-size:.7rem;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-top:.4rem;
+  display:block;
+}
+
+/* COMPETITOR CARDS */
+.cards { display:grid; gap:1.4rem; margin-top:1.6rem; }
+.card {
+  background:var(--card);
+  border-left:4px solid var(--accent);
+  padding:1.6rem 1.6rem 1.4rem;
+  box-shadow:0 1px 0 var(--shadow);
+  transition:transform .25s ease, box-shadow .25s ease;
+}
+.card:hover {
+  transform:translateY(-2px);
+  box-shadow:0 6px 24px var(--shadow);
+}
+.card .num {
+  font-family:'Instrument Serif', serif;
+  font-size:3rem;
+  color:var(--hairline);
+  line-height:1;
+  margin-bottom:.3rem;
+}
+.card .link {
+  display:inline-block;
+  margin-top:.1rem;
+  margin-bottom:.7rem;
+  font-size:.82rem;
+  letter-spacing:.04em;
+  color:var(--accent);
+  border-bottom:1px solid var(--accent);
+  text-decoration:none;
+  font-weight:500;
+}
+.card .link:hover { background:var(--accent-light); color:#fff; border-color:var(--accent-light); padding:1px 4px; }
+.swatches { display:flex; gap:.4rem; margin:.9rem 0 .7rem; flex-wrap:wrap; }
+.swatch {
+  display:inline-flex; align-items:center; gap:.5rem;
+  font-size:.72rem;
+  letter-spacing:.06em;
+  color:var(--muted);
+}
+.swatch .sw {
+  width:18px; height:18px; border-radius:4px;
+  border:1px solid var(--hairline);
+}
+.card .grid2 {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:1rem 1.5rem;
+  margin-top:.9rem;
+}
+@media (max-width:640px){ .card .grid2 { grid-template-columns:1fr; } }
+.tag-list { display:flex; flex-wrap:wrap; gap:.4rem; margin-top:.7rem; }
+.tag {
+  display:inline-block;
+  padding:.32rem .7rem;
+  background:rgba(196,93,62,.08);
+  color:var(--accent);
+  border-radius:999px;
+  font-size:.7rem;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  font-weight:500;
+}
+.tag.warn { background:rgba(164,101,30,.1); color:var(--warn); }
+
+.bars { margin-top:.9rem; }
+.bar { display:grid; grid-template-columns:140px 1fr 28px; align-items:center; gap:.7rem; padding:.32rem 0; font-size:.83rem; }
+.bar b { color:var(--ink); font-weight:500; }
+.bar .track { background:var(--hairline); height:6px; border-radius:99px; overflow:hidden; }
+.bar .fill { background:var(--accent); height:100%; border-radius:99px; }
+
+/* COMPARISON TABLE */
+.tbl-wrap { overflow-x:auto; margin-top:1.4rem; }
+table.compare {
+  width:100%;
+  border-collapse:collapse;
+  background:var(--card);
+  font-size:.9rem;
+  min-width:640px;
+}
+.compare th, .compare td {
+  padding:.85rem 1rem;
+  text-align:left;
+  border-bottom:1px solid var(--hairline);
+}
+.compare th {
+  font-family:'DM Sans', sans-serif;
+  font-size:.72rem;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--muted);
+  font-weight:600;
+  background:var(--paper);
+}
+.compare td.n { text-align:center; font-variant-numeric:tabular-nums; }
+.compare tr.total td { font-weight:700; background:rgba(196,93,62,.06); }
+.compare tr.kincan td { background:rgba(14,125,171,.06); }
+.compare .accent { color:var(--accent); font-weight:600; }
+.compare .cyan { color:var(--cyan); font-weight:600; }
+
+/* PATTERN LIST */
+.patterns { display:grid; gap:1rem; margin-top:1.4rem; }
+.pattern {
+  background:var(--card);
+  border-left:4px solid var(--cyan);
+  padding:1.3rem 1.6rem;
+  box-shadow:0 1px 0 var(--shadow);
+  display:grid;
+  grid-template-columns:54px 1fr;
+  gap:1rem;
+  align-items:start;
+}
+.pattern .n {
+  font-family:'Instrument Serif', serif;
+  font-size:2.4rem;
+  color:var(--cyan);
+  line-height:1;
+}
+.pattern h4 {
+  font-family:'Instrument Serif', serif;
+  font-size:1.25rem;
+  margin-bottom:.3rem;
+}
+.pattern p { color:#2a2a2a; font-size:.95rem; }
+
+/* DIRECTION */
+.direction {
+  background:var(--card);
+  padding:2rem;
+  box-shadow:0 1px 0 var(--shadow);
+  margin-top:1.4rem;
+  border-top:3px solid var(--cyan);
+}
+.direction h3 { color:var(--ink); margin-bottom:.5rem; }
+.palette {
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:.6rem;
+  margin:1rem 0 1.3rem;
+}
+@media (max-width:640px){ .palette { grid-template-columns:repeat(3,1fr); } }
+.col-swatch {
+  text-align:center;
+  font-size:.72rem;
+  color:var(--muted);
+  letter-spacing:.04em;
+}
+.col-swatch .b {
+  height:64px;
+  border-radius:6px;
+  border:1px solid var(--hairline);
+  margin-bottom:.4rem;
+}
+.col-swatch b { color:var(--ink); display:block; font-weight:500; font-size:.78rem; }
+
+/* PRINT */
+@media print {
+  body { background:#fff; color:#000; }
+  body::after { display:none; }
+  section + section { page-break-inside:avoid; }
+  .card, .pattern, .direction { box-shadow:none; }
+  .cover { padding:3rem 0 2rem; }
+  .container { max-width:none; padding:0 1in; }
+  a { color:var(--accent); }
+}
+
+/* FOOTER */
+footer {
+  padding:3rem 0 2.4rem;
+  text-align:center;
+  border-top:1px solid var(--hairline);
+  color:var(--muted);
+  font-size:.82rem;
+}
+footer .confidential {
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  font-size:.72rem;
+  margin-bottom:.6rem;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- COVER -->
+  <header class="cover">
+    <div class="eyebrow">Competitive Analysis Report</div>
+    <h1>The Pine Belt<br/>Pool Market, Mapped.</h1>
+    <p class="lede">A scan of the five strongest pool builders and service companies competing for Hattiesburg homeowners. What they do well, where they are weak, and where Kincan Water Solution can win.</p>
+    <div class="meta-row">
+      <span>Prepared for <b>Kincan Water Solution</b></span>
+      <span>Market: <b>Hattiesburg &amp; Pine Belt, MS</b></span>
+      <span>Date: <b>2026-05-25</b></span>
+    </div>
+  </header>
+
+  <!-- EXECUTIVE SUMMARY -->
+  <section>
+    <span class="section-eyebrow">01 — Executive Summary</span>
+    <h2>The field is crowded. The gaps are obvious.</h2>
+    <p>Kincan operates in a Pine Belt pool market dominated by 50-year incumbents. Adcock has owned the local search position since 1973. Premier Pools brings franchise muscle. Jones, Outdoor Living, and ASP fill the rest of the top five. Every one of them anchors marketing on the same three pillars: years in business, real Mississippi photography, and a single repeated CTA.</p>
+    <p>The good news for Kincan: the existing portfolio (red-umbrella pool, five before-and-after case studies, 40+ years combined experience, $450 deep-clean pricing) already meets the bar. The current site does not. This report scores the field, isolates the three patterns separating the winners, and recommends the build direction.</p>
+    <div class="summary">
+      <div class="kpi"><div class="n">5</div><span class="l">Top competitors scanned</span></div>
+      <div class="kpi"><div class="n">15</div><span class="l">Pine Belt towns Kincan serves</span></div>
+      <div class="kpi"><div class="n">$450</div><span class="l">"Bringing it Blue" price wedge</span></div>
+      <div class="kpi"><div class="n">49&rarr;72</div><span class="l">Current score &rarr; build target</span></div>
+    </div>
+  </section>
+
+  <!-- COMPETITOR PROFILES -->
+  <section>
+    <span class="section-eyebrow">02 — Competitor Profiles</span>
+    <h2>The five firms competing for Kincan's leads.</h2>
+
+    <div class="cards">
+
+      <!-- ADCOCK -->
+      <div class="card">
+        <div class="num">01</div>
+        <h3>Adcock Pool, Spa &amp; Billiards</h3>
+        <a class="link" href="https://adcockpoolandspa.com/" target="_blank" rel="noopener">adcockpoolandspa.com</a>
+        <div class="swatches">
+          <span class="swatch"><span class="sw" style="background:#1d8aa6"></span>#1d8aa6</span>
+          <span class="swatch"><span class="sw" style="background:#0d2e3a"></span>#0d2e3a</span>
+          <span class="swatch"><span class="sw" style="background:#f4efe7"></span>#f4efe7</span>
+        </div>
+        <p><b>Hero:</b> "Custom Pools Built for Mississippi Backyards. Mississippi's Trusted Pool Builder Since 1973."</p>
+        <div class="grid2">
+          <div>
+            <p style="font-size:.85rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.4rem;">Strengths</p>
+            <p>Master Pools Guild medals. 51-year heritage. Polished lifestyle photography. Owns "#SwimSmokeSoak" as a category.</p>
+          </div>
+          <div>
+            <p style="font-size:.85rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.4rem;">Weaknesses</p>
+            <p>Retail-heavy nav makes pool service feel secondary. No transparent pricing. Three phone numbers can confuse.</p>
+          </div>
+        </div>
+        <div class="bars">
+          <div class="bar"><b>Search visibility</b><div class="track"><div class="fill" style="width:100%"></div></div><span>10</span></div>
+          <div class="bar"><b>Visual design</b><div class="track"><div class="fill" style="width:90%"></div></div><span>9</span></div>
+          <div class="bar"><b>Content depth</b><div class="track"><div class="fill" style="width:90%"></div></div><span>9</span></div>
+          <div class="bar"><b>Social proof</b><div class="track"><div class="fill" style="width:90%"></div></div><span>9</span></div>
+          <div class="bar"><b>CTA strategy</b><div class="track"><div class="fill" style="width:90%"></div></div><span>9</span></div>
+          <div class="bar"><b>Mobile</b><div class="track"><div class="fill" style="width:90%"></div></div><span>9</span></div>
+        </div>
+        <div class="tag-list">
+          <span class="tag">Total 72/80</span>
+          <span class="tag">Heritage play</span>
+          <span class="tag">Retail + service</span>
+        </div>
+      </div>
+
+      <!-- PREMIER -->
+      <div class="card">
+        <div class="num">02</div>
+        <h3>Premier Pools &amp; Spas of Hattiesburg</h3>
+        <a class="link" href="https://premierpoolsandspas.com/pool-builders/mississippi/hattiesburg/" target="_blank" rel="noopener">premierpoolsandspas.com</a>
+        <div class="swatches">
+          <span class="swatch"><span class="sw" style="background:#13355e"></span>#13355e</span>
+          <span class="swatch"><span class="sw" style="background:#3da3d6"></span>#3da3d6</span>
+          <span class="swatch"><span class="sw" style="background:#f5f7fa"></span>#f5f7fa</span>
+        </div>
+        <p><b>Hero:</b> "Hattiesburg, MS Inground Pool Builder. Specializes in Gunite Pools, Fiberglass Pools, &amp; Pool Remodeling."</p>
+        <div class="grid2">
+          <div>
+            <p style="font-size:.85rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.4rem;">Strengths</p>
+            <p>National scale (100,000+ pools, 115 locations). Franchise polish. Clear product taxonomy: gunite, fiberglass, remodel.</p>
+          </div>
+          <div>
+            <p style="font-size:.85rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.4rem;">Weaknesses</p>
+            <p>Reads as a franchise. No Pine Belt story. Generic photography. Cookie-cutter template.</p>
+          </div>
+        </div>
+        <div class="bars">
+          <div class="bar"><b>Search visibility</b><div class="track"><div class="fill" style="width:90%"></div></div><span>9</span></div>
+          <div class="bar"><b>Visual design</b><div class="track"><div class="fill" style="width:80%"></div></div><span>8</span></div>
+          <div class="bar"><b>Content depth</b><div class="track"><div class="fill" style="width:80%"></div></div><span>8</span></div>
+          <div class="bar"><b>Social proof</b><div class="track"><div class="fill" style="width:80%"></div></div><span>8</span></div>
+          <div class="bar"><b>CTA strategy</b><div class="track"><div class="fill" style="width:90%"></div></div><span>9</span></div>
+          <div class="bar"><b>Mobile</b><div class="track"><div class="fill" style="width:80%"></div></div><span>8</span></div>
+        </div>
+        <div class="tag-list">
+          <span class="tag">Total 65/80</span>
+          <span class="tag">National franchise</span>
+          <span class="tag">Gunite specialist</span>
+        </div>
+      </div>
+
+      <!-- JONES -->
+      <div class="card">
+        <div class="num">03</div>
+        <h3>Jones Pool &amp; Construction</h3>
+        <a class="link" href="https://www.jonespool.com/" target="_blank" rel="noopener">jonespool.com</a>
+        <div class="swatches">
+          <span class="swatch"><span class="sw" style="background:#1a5fa5"></span>#1a5fa5</span>
+          <span class="swatch"><span class="sw" style="background:#ffffff;border:1px solid #d6d2cc"></span>#ffffff</span>
+          <span class="swatch"><span class="sw" style="background:#222"></span>#222</span>
+        </div>
+        <p><b>Hero:</b> "Your Destination For Exceptional Pool Construction Services."</p>
+        <div class="grid2">
+          <div>
+            <p style="font-size:.85rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.4rem;">Strengths</p>
+            <p>48 years experience. 1-year workmanship warranty. Free pool cleaner with every new install. Strong long-tail SEO in Columbia and Purvis.</p>
+          </div>
+          <div>
+            <p style="font-size:.85rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.4rem;">Weaknesses</p>
+            <p>Site looks 2014. No portfolio depth. No testimonials. Visual identity doesn't match the experience claim.</p>
+          </div>
+        </div>
+        <div class="bars">
+          <div class="bar"><b>Search visibility</b><div class="track"><div class="fill" style="width:70%"></div></div><span>7</span></div>
+          <div class="bar"><b>Visual design</b><div class="track"><div class="fill" style="width:50%"></div></div><span>5</span></div>
+          <div class="bar"><b>Content depth</b><div class="track"><div class="fill" style="width:50%"></div></div><span>5</span></div>
+          <div class="bar"><b>Social proof</b><div class="track"><div class="fill" style="width:40%"></div></div><span>4</span></div>
+          <div class="bar"><b>CTA strategy</b><div class="track"><div class="fill" style="width:60%"></div></div><span>6</span></div>
+          <div class="bar"><b>Mobile</b><div class="track"><div class="fill" style="width:60%"></div></div><span>6</span></div>
+        </div>
+        <div class="tag-list">
+          <span class="tag">Total 47/80</span>
+          <span class="tag warn">Dated</span>
+          <span class="tag">Warranty pitch</span>
+        </div>
+      </div>
+
+      <!-- OUTDOOR LIVING -->
+      <div class="card">
+        <div class="num">04</div>
+        <h3>Outdoor Living &amp; Design</h3>
+        <a class="link" href="https://outdoorlivingdesign.org/" target="_blank" rel="noopener">outdoorlivingdesign.org</a>
+        <div class="swatches">
+          <span class="swatch"><span class="sw" style="background:#7ba37a"></span>#7ba37a</span>
+          <span class="swatch"><span class="sw" style="background:#5a4b3a"></span>#5a4b3a</span>
+          <span class="swatch"><span class="sw" style="background:#f5f0e6"></span>#f5f0e6</span>
+        </div>
+        <p><b>Hero:</b> "Outdoor Living &amp; Design. Delivering Paradise to Your Backyard."</p>
+        <div class="grid2">
+          <div>
+            <p style="font-size:.85rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.4rem;">Strengths</p>
+            <p>Freshest visual identity in the field. Sage + cream palette differentiates against blue-heavy competitors. Curved SVG accents. Lifestyle-first photography.</p>
+          </div>
+          <div>
+            <p style="font-size:.85rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.4rem;">Weaknesses</p>
+            <p>Diffuse focus. Pool is one of seven service categories. Doesn't own any single pool keyword. Lacks years-in-business anchor.</p>
+          </div>
+        </div>
+        <div class="bars">
+          <div class="bar"><b>Search visibility</b><div class="track"><div class="fill" style="width:70%"></div></div><span>7</span></div>
+          <div class="bar"><b>Visual design</b><div class="track"><div class="fill" style="width:80%"></div></div><span>8</span></div>
+          <div class="bar"><b>Content depth</b><div class="track"><div class="fill" style="width:70%"></div></div><span>7</span></div>
+          <div class="bar"><b>Social proof</b><div class="track"><div class="fill" style="width:60%"></div></div><span>6</span></div>
+          <div class="bar"><b>CTA strategy</b><div class="track"><div class="fill" style="width:70%"></div></div><span>7</span></div>
+          <div class="bar"><b>Mobile</b><div class="track"><div class="fill" style="width:80%"></div></div><span>8</span></div>
+        </div>
+        <div class="tag-list">
+          <span class="tag">Total 58/80</span>
+          <span class="tag">One-stop outdoor</span>
+          <span class="tag">Lifestyle aesthetic</span>
+        </div>
+      </div>
+
+      <!-- ASP -->
+      <div class="card">
+        <div class="num">05</div>
+        <h3>ASP America's Swimming Pool Co.</h3>
+        <a class="link" href="https://www.asppoolco.com/hattiesburg/" target="_blank" rel="noopener">asppoolco.com/hattiesburg</a>
+        <div class="swatches">
+          <span class="swatch"><span class="sw" style="background:#c2272d"></span>#c2272d</span>
+          <span class="swatch"><span class="sw" style="background:#1a2a3a"></span>#1a2a3a</span>
+          <span class="swatch"><span class="sw" style="background:#ffffff;border:1px solid #d6d2cc"></span>#ffffff</span>
+        </div>
+        <p><b>Hero:</b> "Find a Local ASP. America's Swimming Pool Company." Maintenance-first positioning.</p>
+        <div class="grid2">
+          <div>
+            <p style="font-size:.85rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.4rem;">Strengths</p>
+            <p>National brand recognition. 200+ franchise locations. Strong technical service taxonomy. Clean ZIP-code lookup UX.</p>
+          </div>
+          <div>
+            <p style="font-size:.85rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.4rem;">Weaknesses</p>
+            <p>Hattiesburg location page feels templated. No founder, no local story. Corporate locator feel.</p>
+          </div>
+        </div>
+        <div class="bars">
+          <div class="bar"><b>Search visibility</b><div class="track"><div class="fill" style="width:80%"></div></div><span>8</span></div>
+          <div class="bar"><b>Visual design</b><div class="track"><div class="fill" style="width:70%"></div></div><span>7</span></div>
+          <div class="bar"><b>Content depth</b><div class="track"><div class="fill" style="width:70%"></div></div><span>7</span></div>
+          <div class="bar"><b>Social proof</b><div class="track"><div class="fill" style="width:80%"></div></div><span>8</span></div>
+          <div class="bar"><b>CTA strategy</b><div class="track"><div class="fill" style="width:80%"></div></div><span>8</span></div>
+          <div class="bar"><b>Mobile</b><div class="track"><div class="fill" style="width:80%"></div></div><span>8</span></div>
+        </div>
+        <div class="tag-list">
+          <span class="tag">Total 62/80</span>
+          <span class="tag">National franchise</span>
+          <span class="tag">Maintenance-first</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- COMPARISON TABLE -->
+  <section>
+    <span class="section-eyebrow">03 — Comparison Matrix</span>
+    <h2>How the five score, side by side.</h2>
+    <div class="tbl-wrap">
+      <table class="compare">
+        <thead>
+          <tr>
+            <th>Criterion</th>
+            <th class="n">Adcock</th>
+            <th class="n">Premier</th>
+            <th class="n">Jones</th>
+            <th class="n">Outdoor Living</th>
+            <th class="n">ASP</th>
+            <th class="n">Kincan (current)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Search visibility</td><td class="n">10</td><td class="n">9</td><td class="n">7</td><td class="n">7</td><td class="n">8</td><td class="n cyan">6</td></tr>
+          <tr><td>Review quality</td><td class="n">9</td><td class="n">8</td><td class="n">7</td><td class="n">7</td><td class="n">8</td><td class="n cyan">8</td></tr>
+          <tr><td>Visual design</td><td class="n">9</td><td class="n">8</td><td class="n">5</td><td class="n">8</td><td class="n">7</td><td class="n cyan">4</td></tr>
+          <tr><td>Mobile responsive</td><td class="n">9</td><td class="n">8</td><td class="n">6</td><td class="n">8</td><td class="n">8</td><td class="n cyan">6</td></tr>
+          <tr><td>Content depth</td><td class="n">9</td><td class="n">8</td><td class="n">5</td><td class="n">7</td><td class="n">7</td><td class="n cyan">5</td></tr>
+          <tr><td>Social proof</td><td class="n">9</td><td class="n">8</td><td class="n">4</td><td class="n">6</td><td class="n">8</td><td class="n cyan">7</td></tr>
+          <tr><td>CTA strategy</td><td class="n">9</td><td class="n">9</td><td class="n">6</td><td class="n">7</td><td class="n">8</td><td class="n cyan">6</td></tr>
+          <tr><td>Page speed</td><td class="n">8</td><td class="n">7</td><td class="n">7</td><td class="n">8</td><td class="n">8</td><td class="n cyan">7</td></tr>
+          <tr class="total"><td>Total / 80</td><td class="n">72</td><td class="n">65</td><td class="n">47</td><td class="n">58</td><td class="n">62</td><td class="n accent">49</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="margin-top:1rem;font-size:.92rem;color:var(--muted);">Kincan today: <b style="color:var(--cyan)">49/80</b>. The rebuild target: <b style="color:var(--accent)">72+</b>. Match Adcock on visual design, mobile, and content depth. Beat Adcock on transparent pricing and the Pine Belt geography map.</p>
+  </section>
+
+  <!-- SEO -->
+  <section>
+    <span class="section-eyebrow">04 — SEO Landscape</span>
+    <h2>Three keywords nobody owns yet.</h2>
+    <div class="cards">
+      <div class="card">
+        <h3 style="font-size:1.2rem;">"Pool heater repair Hattiesburg"</h3>
+        <p>Not owned by Adcock, Premier, Jones, Outdoor Living, or ASP. Kincan already lists this as a service. A dedicated indexable page captures the entire keyword cluster.</p>
+        <div class="tag-list"><span class="tag">White space</span><span class="tag">Easy win</span></div>
+      </div>
+      <div class="card">
+        <h3 style="font-size:1.2rem;">"$450 pool deep clean" (price-anchored search)</h3>
+        <p>Adcock and Premier hide pricing entirely. Kincan's "Bringing it Blue" service has a transparent price. Lead the maintenance page with it. Use schema markup to expose the price in SERP.</p>
+        <div class="tag-list"><span class="tag">Wedge pricing</span><span class="tag">Local intent</span></div>
+      </div>
+      <div class="card">
+        <h3 style="font-size:1.2rem;">"Pool service [Pine Belt town]"</h3>
+        <p>15 towns. None of the top five have dedicated location pages for the small towns (Mosel, Oloh, Dixie, New Augusta, Richton). A future programmatic SEO play with a single template page per town captures the long-tail.</p>
+        <div class="tag-list"><span class="tag">Long-tail</span><span class="tag">Phase 2 work</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PATTERNS -->
+  <section>
+    <span class="section-eyebrow">05 — Patterns of the Top 10%</span>
+    <h2>Three habits separating the winners.</h2>
+    <div class="patterns">
+      <div class="pattern">
+        <div class="n">01</div>
+        <div>
+          <h4>Years in business, anchored above the fold.</h4>
+          <p>Adcock says "Since 1973" in the hero. Premier says "Founded in 1988." Jones says "48 years." The Pine Belt market trades on longevity. Kincan's "40+ years combined experience" belongs on the homepage hero, not buried in About.</p>
+        </div>
+      </div>
+      <div class="pattern">
+        <div class="n">02</div>
+        <div>
+          <h4>One primary CTA, repeated five times.</h4>
+          <p>Adcock uses "Get Started." Premier uses "Request a Free Quote." The top three repeat one phrase 4-6 times across the page. Kincan currently rotates between "Learn More," "Contact us," and "Submit." Pick one, repeat it, pin the phone in the nav.</p>
+        </div>
+      </div>
+      <div class="pattern">
+        <div class="n">03</div>
+        <div>
+          <h4>Real Mississippi photography, no stock.</h4>
+          <p>Adcock and Outdoor Living lead with actual finished Pine Belt pools. The bottom-half sites use stock imagery and it shows. Kincan already owns the red-umbrella pool, five before-and-after case studies, and a working water feature. Promote them.</p>
+        </div>
+      </div>
+      <div class="pattern">
+        <div class="n">04</div>
+        <div>
+          <h4>Trust badge cluster.</h4>
+          <p>Master Pools Guild, BBB, HomeAdvisor, Houzz, Google. The badge wall is real and it converts. Kincan already qualifies on HomeAdvisor, Houzz, and Google. Build the visible cluster.</p>
+        </div>
+      </div>
+      <div class="pattern">
+        <div class="n">05</div>
+        <div>
+          <h4>Geography as a moat.</h4>
+          <p>The top three name 8-15 specific Pine Belt towns. Kincan serves 15. That's the largest stated coverage area in the field. Render it as a visible service map, not a hidden list.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DIRECTION -->
+  <section>
+    <span class="section-eyebrow">06 — Recommended Design Direction</span>
+    <h2>What we will build.</h2>
+    <div class="direction">
+      <h3>Palette</h3>
+      <p>Three of five top competitors use a water blue. Outdoor Living differentiates with sage. ASP uses red. The opportunity is a deep, refined <b>pool cyan</b> as the primary and Kincan's heritage <b>sunset red</b> as a sparing accent. This honors the existing logo while owning a more confident water position than Adcock's tealer cyan or Premier's navy.</p>
+      <div class="palette">
+        <div class="col-swatch"><div class="b" style="background:#0E7DAB"></div><b>#0E7DAB</b>Pool cyan</div>
+        <div class="col-swatch"><div class="b" style="background:#0B1F2A"></div><b>#0B1F2A</b>Midnight</div>
+        <div class="col-swatch"><div class="b" style="background:#C8442C"></div><b>#C8442C</b>Sunset red</div>
+        <div class="col-swatch"><div class="b" style="background:#F2EBDC"></div><b>#F2EBDC</b>Sand</div>
+        <div class="col-swatch"><div class="b" style="background:#FAF7F1"></div><b>#FAF7F1</b>Paper</div>
+      </div>
+      <h3>Typography</h3>
+      <p>Heading: <b>Fraunces</b>. A confident, warm serif. Reads as premium without going stiff. Body: <b>Inter</b>. Quiet, technical, easy on mobile.</p>
+      <h3>Photography</h3>
+      <p>Lead with the red-umbrella pool and the five before-and-after case studies. Self-host everything in <code>site/assets/</code>. No stock photography on the homepage, ever.</p>
+      <h3>Animation</h3>
+      <p>GSAP + ScrollTrigger. A reserved hero slot for a future scroll-driven 3D pool asset. Section reveals on enter. Parallax on the geography map. Counter animation on the "40+ years" and "$450" numbers (years are static, not animated).</p>
+      <h3>What to avoid</h3>
+      <p>Em-dashes in copy. Generic stock photography. Three competing CTAs. Buried phone number. Hidden pricing. The "franchise" voice from Premier and ASP.</p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="confidential">Confidential. Prepared for Kincan Water Solution.</div>
+    <div>Sources: direct site scrapes, BBB Hattiesburg, Angi top-10, Master Pools Guild directory.</div>
+    <div style="width:100%; margin-top:20px; padding-top:20px; border-top:1px solid var(--hairline); text-align:center; font-size:12px; letter-spacing:.08em;">
+      Created by <a href="https://www.chatbotboy.ai/" target="_blank" rel="noopener" style="color:var(--accent); font-weight:600; border-bottom:1px solid var(--accent); text-decoration:none;">Chatbot Boy AI</a>
+    </div>
+  </footer>
+
+</div>
+
+</body>
+</html>
